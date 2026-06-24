@@ -354,13 +354,10 @@ validate_columns(
 )
 
 st.title("Dashboard de Backtesting Cuantitativo")
-st.caption("Resultados precomputados a partir de datos locales IBKR en Parquet.")
+st.caption("Resultados precomputados a partir de datos locales IBKR.")
 
 with st.sidebar:
     st.header("Filtros")
-    if st.button("Recargar resultados", width="stretch"):
-        st.cache_data.clear()
-        st.rerun()
     tickers = sorted(summary["ticker"].dropna().astype(str).unique())
     ticker = st.selectbox("Ticker", tickers)
     ticker_rows = summary[summary["ticker"].astype(str) == ticker]
